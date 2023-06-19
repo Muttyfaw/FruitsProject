@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "db": "^4.0.1",
-    "mongo": "^0.1.0"
+    "mongo": "^0.1.0",
+    "mongoose": "^7.3.0"
   }
 }

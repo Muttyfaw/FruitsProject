@@ -1,55 +1,33 @@
 // Importing MongoClient from mongodb driver
-const { MongoClient } = require('mongodb');
+const mongoose = require('mongoose');
 
-// Connecting to a local port
-const uri = 'mongodb://127.0.0.1:27017';
+mongoose.connect("mongodb://localhost:27017/fruitsDB")
 
-const client = new MongoClient(uri, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-});
 
-connect();
+ // Insertion
+const insertDocuments = function(db, callback){
 
-// ESNext syntax using async-await
-async function connect() {
-    try {
-        await client.connect();
-        const db = client.db('fruitsDB');
-        console.log(
-            `Successfully connected to db ${db.databaseName}`);
-        
-        const fruits = db.collection('fruits');
-
-        // Insertion
-        const cursorInsertion = await fruits.insertMany([
-            {
-                name : "Apple",
-                score: 8 ,
-                review : 'Great Fruit'
-            },
-            {
-                name : "Orange",
-                score : 6 ,
-                review : "Kinda sour"
-            },
-            {
-                name: "Banana",
-                score: 9 ,
-                review: "Great stuff"
-            }
-        ]);
-        console.log(cursorInsertion.insertedCount);
-
-        // Display
-        const cursorFind = fruits.find();
-        const data = await cursorFind.toArray();
-        console.table(data);
+const collection = db.collection("fruits")
+const cursorInsertion = fruits.insertMany([
+    {
+        name : "Apple",
+        score: 8 ,
+        review : 'Great Fruit'
+    },
+    {
+        name : "Orange",
+        score : 6 ,
+        review : "Kinda sour"
+    },
+    {
+        name: "Banana",
+        score: 9 ,
+        review: "Great stuff"
     }
-    catch (err) {
-        console.error(`we encountered ${err}`);
-    }
-    finally {
-        client.close();
-    }
+]);
+console.log(cursorInsertion.insertedCount);
 }
+   
+       
+    
+   
