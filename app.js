@@ -1,14 +1,14 @@
-const  MongoClient  = require("mongodb");
+const  MongoClient  = require("mongodb").MongoClient;
 const assert = require("assert")
 
 // Replace the uri string with your connection string.
-const url = "mongodb://localhost:27017";
+const url = "mongodb://127.0.0.1:27017";
 
 // Database name
 const dbName = "fruitsDB"
 
 //New mongo client
-const client = new MongoClient(url);
+const client = new MongoClient(url, { useNewUrlParser: true });
 
 //Use connct method to connect to the server
 client.connect(function(err){
