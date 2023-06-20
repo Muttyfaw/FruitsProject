@@ -3,30 +3,22 @@ const mongoose = require('mongoose');
 
 mongoose.connect("mongodb://localhost:27017/fruitsDB")
 
+const fruitSchema = new mongoose.Schema({
+    name: String,
+    rating: Number,
+    review: String
+})
 
- // Insertion
-const insertDocuments = function(db, callback){
+const Fruit = mongoose.model("Fruit", fruitSchema)
 
-const collection = db.collection("fruits")
-const cursorInsertion = fruits.insertMany([
-    {
-        name : "Apple",
-        score: 8 ,
-        review : 'Great Fruit'
-    },
-    {
-        name : "Orange",
-        score : 6 ,
-        review : "Kinda sour"
-    },
-    {
-        name: "Banana",
-        score: 9 ,
-        review: "Great stuff"
-    }
-]);
-console.log(cursorInsertion.insertedCount);
-}
+const fruit = new Fruit ({
+    name: "Apple",
+    rating: 7,
+    review: "Pretty solid as a fruit"
+})
+
+fruit.save()
+
    
        
     
